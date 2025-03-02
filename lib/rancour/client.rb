@@ -2,7 +2,7 @@
 
 require 'httpx'
 
-module Rancor
+module Rancour
   class Client
     DISCORD_API_VERSION = 10
 

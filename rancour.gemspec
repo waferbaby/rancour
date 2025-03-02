@@ -2,15 +2,15 @@
 
 $LOAD_PATH.unshift File.expand_path('./lib')
 
-require 'rancor/version'
+require 'rancour/version'
 
 Gem::Specification.new do |s|
-  s.name = 'rancor'
-  s.version = Rancor::VERSION
+  s.name = 'rancour'
+  s.version = Rancour::VERSION
   s.platform = Gem::Platform::RUBY
   s.authors = ['Daniel Bogan']
-  s.email = ['d+rancor@waferbaby.com']
-  s.homepage = 'http://github.com/waferbaby/rancor'
+  s.email = ['d+rancour@waferbaby.com']
+  s.homepage = 'http://github.com/waferbaby/rancour'
   s.summary = 'A simple Discord wrapper'
   s.description = 'A simple gem for working with Discord.'
   s.license = 'MIT'

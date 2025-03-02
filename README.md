@@ -1,3 +1,3 @@
-![Gem Version](https://img.shields.io/gem/v/rancor)
+![Gem Version](https://img.shields.io/gem/v/rancour)
 
-Rancor is a simple wrapper around the Discord API.
+Rancour is a simple wrapper around the Discord API.

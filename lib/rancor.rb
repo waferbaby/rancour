@@ -2,4 +2,4 @@
 
 $LOAD_PATH.unshift(__dir__)
 
-require 'rancor/client'
+require 'rancour/client'
