@@ -24,13 +24,15 @@ module Rancour
     end
 
     def delete_application_command(command_id, guild_id: nil)
-      delete(commands_path(guild_id: guild_id) + command_id)
+      delete(commands_path(guild_id: guild_id) + "/#{command_id}")
     end
 
     private
 
     def commands_path(guild_id: nil)
-      "#{"/guides/#{guild_id}" if guild_id.present?}/commands/"
+      return "/guilds/#{guild_id}/commands" if guild_id.present?
+
+      '/commands'
     end
 
     def get(endpoint)
@@ -46,7 +48,6 @@ module Rancour
     end
 
     def delete(endpoint)
-      puts "I am sending a delete to #{endpoint}"
       process_response(http_client.delete(endpoint))
     end
 
@@ -55,7 +56,8 @@ module Rancour
         origin: 'https://discord.com',
         base_path: "/api/v#{DISCORD_API_VERSION}/applications/#{@app_id}",
         headers: {
-          authorization: authorization_header
+          authorization: authorization_header,
+          'content-type': 'application/json'
         }
       )
     end
