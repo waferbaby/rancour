@@ -8,7 +8,7 @@ module Rancour
       verification_key = Ed25519::VerifyKey.new([public_key].pack('H*'))
       verification_key.verify([signature].pack('H*'), "#{timestamp}#{body}")
     rescue Ed25519::VerifyError => e
-      raise Rancour::InvalidParamsError(e)
+      raise InvalidParamsError, e
     end
   end
 end
