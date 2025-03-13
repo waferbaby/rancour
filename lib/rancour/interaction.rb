@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'ed25519'
-
 module Rancour
-  class Interaction
+  class Interaction < Response
     PING = 1
     APPLICATION_COMMAND = 2
     MESSAGE_COMPONENT = 3
