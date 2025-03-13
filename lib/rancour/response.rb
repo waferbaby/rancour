@@ -20,9 +20,8 @@ module Rancour
 
         response.guild = Guild.from_payload(payload['guild'])
         response.user = User.from_payload(payload.dig('member', 'user'))
+        response.data = InteractionData.from_payload(payload['data'])
       end
-    rescue StandardError => e
-      puts "OH NO: #{e}"
     end
   end
 end
