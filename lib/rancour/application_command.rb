@@ -35,7 +35,7 @@ module Rancour
 
       return if options.nil?
 
-      self.options = options.map { |option| InteractionData.from_payload(option) }
+      self.options = options.map { |option| Interaction::Data.from_payload(option) }
     end
   end
 end
