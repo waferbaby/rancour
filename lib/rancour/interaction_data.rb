@@ -2,26 +2,32 @@
 
 module Rancour
   class InteractionData
-    attr_accessor :id, :guild_id, :name, :options
+    attr_accessor :name, :type, :value, :focused, :options
 
     def self.from_payload(payload)
       new(
-        id: payload['id'],
-        guild_id: payload['guild_id'],
         name: payload['name'],
+        type: payload['type'],
+        value: payload['value'],
+        focused: payload['focused'],
         options: payload['options']
       )
     end
 
-    def initialize(id:, guild_id:, name:, options:)
-      self.id = id
-      self.guild_id = guild_id
+    def initialize(name:, type:, value:, focused: false, options: [])
       self.name = name
+      self.type = type
+      self.value = value
+      self.focused = focused
       self.options = []
 
       return if options.nil?
 
-      self.options = options.map { |option| InteractionData.from_payload(option) }
+      self.options = options.map { |option| self.class.from_payload(option) }
+    end
+
+    def focused_option
+      options&.select(&:focused)&.first
     end
   end
 end

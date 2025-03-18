@@ -20,8 +20,15 @@ module Rancour
 
         response.guild = Guild.from_payload(payload['guild'])
         response.user = User.from_payload(payload.dig('member', 'user'))
-        response.data = InteractionData.from_payload(payload['data'])
+
+        response.send(:process_data, payload['data'])
       end
+    end
+
+    private
+
+    def process_data(_data)
+      raise 'Not implemented'
     end
   end
 end
