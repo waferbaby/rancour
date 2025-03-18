@@ -20,10 +20,10 @@ module Rancour
       end
 
       def to_h
-        {}.tap do |output|
-          output[:type] = type
-          output[:data] = data.to_h if data.present?
-        end
+        {
+          type: type,
+          data: data&.to_h
+        }
       end
     end
   end
