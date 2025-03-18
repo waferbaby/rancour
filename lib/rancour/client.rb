@@ -11,8 +11,8 @@ module Rancour
 
       @app_id = app_id
 
-      @bot_token = bot_token if bot_token.present?
-      @bearer_token = bearer_token if bearer_token.present?
+      @bot_token = bot_token unless bot_token.nil?
+      @bearer_token = bearer_token unless bearer_token.nil?
     end
 
     def fetch_application_commands(guild_id: nil)
@@ -30,7 +30,7 @@ module Rancour
     private
 
     def commands_path(guild_id: nil)
-      return "/guilds/#{guild_id}/commands" if guild_id.present?
+      return "/guilds/#{guild_id}/commands" unless guild_id.nil?
 
       '/commands'
     end
@@ -82,7 +82,7 @@ module Rancour
     end
 
     def authorization_header
-      return "Bearer #{@bearer_token}" if @bearer_token.present?
+      return "Bearer #{@bearer_token}" unless @bearer_token.nil?
 
       "Bot #{@bot_token}"
     end
