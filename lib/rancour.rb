@@ -12,6 +12,8 @@ require 'rancour/user'
 
 require 'rancour/application_command'
 
+require 'rancour/interaction/choice'
 require 'rancour/interaction/data'
 require 'rancour/interaction/request'
 require 'rancour/interaction/response'
+require 'rancour/interaction/choices_response'
