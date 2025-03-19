@@ -27,8 +27,8 @@ module Rancour
             response.send("#{field}=", payload[field])
           end
 
-          response.guild = Guild.from_payload(payload['guild'])
-          response.user = User.from_payload(payload.dig('member', 'user'))
+          response.guild = Guild.from_payload(payload['guild']) if payload.key?('guild')
+          response.user = User.from_payload(payload.dig('member', 'user')) if payload.key?('member')
 
           response.send(:process_data, payload['data'])
         end
@@ -37,6 +37,8 @@ module Rancour
       private
 
       def process_data(data)
+        return if data.nil?
+
         case type
         when APPLICATION_COMMAND, APPLICATION_COMMAND_AUTOCOMPLETE
           self.command = ApplicationCommand.from_payload(data)
