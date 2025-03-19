@@ -21,7 +21,7 @@ module Rancour
       end
 
       def to_h
-        { name: name, value: value }
+        { name: name.to_s, value: value.to_s }
       end
     end
   end
