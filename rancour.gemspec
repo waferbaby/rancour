@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = Dir['lib/**/*']
   s.require_path = 'lib'
 
+  s.add_runtime_dependency 'ed25519', '~> 1.3'
   s.add_runtime_dependency 'httpx', '~> 1.4'
 
   s.metadata['rubygems_mfa_required'] = 'true'
