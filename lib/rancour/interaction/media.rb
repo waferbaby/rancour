@@ -14,9 +14,9 @@ module Rancour
 
       def to_h
         { url: url }.tap do |output|
-          output.proxy_url = proxy_url unless proxy_url.nil?
-          output.width = width unless width.nil?
-          output.height = height unless height.nil?
+          output[:proxy_url] = proxy_url unless proxy_url.nil?
+          output[:width] = width unless width.nil?
+          output[:height] = height unless height.nil?
         end
       end
     end
