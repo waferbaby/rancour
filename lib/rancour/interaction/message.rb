@@ -16,6 +16,14 @@ module Rancour
 
         embeds << embed
       end
+
+      def to_h
+        {}.tap do |output|
+          output[:tts] = tts unless tts.nil?
+          output[:content] = content unless content.nil?
+          output[:embeds] = embeds&.map(&:to_h) unless embeds.nil?
+        end
+      end
     end
   end
 end
