@@ -32,6 +32,16 @@ module Rancour
         define_method("#{field}=") { |value| @children[field] = value }
         define_method(field) { @children[field] }
       end
+
+      def to_h
+        {}.tap do |output|
+          output[:title] = title unless title.nil?
+          output[:description] = description unless description.nil?
+          output[:url] = url unless url.nil?
+          output[:color] = colour unless colour.nil?
+          output[:fields] = fields&.to_h unless fields.nil?
+        end
+      end
     end
   end
 end
