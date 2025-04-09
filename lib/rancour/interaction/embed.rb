@@ -39,7 +39,8 @@ module Rancour
           output[:description] = description unless description.nil?
           output[:url] = url unless url.nil?
           output[:color] = colour unless colour.nil?
-          output[:fields] = fields&.to_h unless fields.nil?
+
+          @children.each { |type, entry| output[type] = entry.to_h } unless @children.nil?
         end
       end
     end
