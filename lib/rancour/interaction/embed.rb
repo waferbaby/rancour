@@ -40,7 +40,7 @@ module Rancour
           output[:url] = url unless url.nil?
           output[:color] = colour unless colour.nil?
 
-          @children.each { |type, entry| output[type] = entry.to_h } unless @children.nil?
+          @children&.each { |type, entry| output[type] = entry.to_h }
         end
       end
     end
