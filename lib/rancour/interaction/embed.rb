@@ -28,9 +28,25 @@ module Rancour
         @children = {}
       end
 
-      %i[footer image thumbnail video provider author fields].each do |field|
-        define_method("#{field}=") { |value| @children[field] = value }
-        define_method(field) { @children[field] }
+      %i[image thumbnail video].each do |field|
+        define_method("assign_#{field}") do |url:, proxy_url: nil, width: nil, height: nil|
+          @children[field] = { url: url }
+
+          @children[field][:proxy_url] = proxy_url unless proxy_url.nil?
+          @children[field][:width] = width unless width.nil?
+          @children[field][:height] = height unless height.nil?
+        end
+      end
+
+      def assign_author(name:, url: nil, icon_url: nil)
+        @children[:author] = { name: name }
+        @children[:author][:url] = url unless url.nil?
+        @children[:author][:icon_url] = icon_url unless icon_url.nil?
+      end
+
+      def assign_footer(text:, icon_url: nil)
+        @children[:footer] = { text: text }
+        @children[:footer][:icon_url] = icon_url unless icon_url.nil?
       end
 
       def to_h
