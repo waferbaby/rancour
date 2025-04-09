@@ -37,9 +37,5 @@ module Rancour
 
       self.options = options.map { |option| Interaction::Data.from_payload(option) }
     end
-
-    def focused_option
-      options.map(&:focused_option).first
-    end
   end
 end
