@@ -20,15 +20,18 @@ module Rancour
         self.type = type
         self.value = value
         self.focused = focused
-        self.options = []
+        self.options = {}
 
         return if options.nil?
 
-        self.options = options.map { |option| self.class.from_payload(option) }
+        self.options = options.to_h do |option|
+          entry = self.class.from_payload(option)
+          [entry.name.to_sym, entry]
+        end
       end
 
       def focused_option
-        options&.select(&:focused)&.first
+        options&.values&.select(&:focused)&.first
       end
     end
   end
