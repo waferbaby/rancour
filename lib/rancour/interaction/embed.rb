@@ -16,14 +16,15 @@ module Rancour
                     :description,
                     :url,
                     :timestamp,
-                    :colour
+                    :color
 
-      def initialize(title: nil, description: nil, url: nil, type: RICH, timestamp: nil)
+      def initialize(title: nil, description: nil, url: nil, type: RICH, timestamp: nil, color: nil)
         self.title = title
         self.description = description
         self.url = url
         self.type = type
         self.timestamp = timestamp
+        self.color = color
 
         @children = {}
       end
@@ -54,7 +55,7 @@ module Rancour
           output[:title] = title unless title.nil?
           output[:description] = description unless description.nil?
           output[:url] = url unless url.nil?
-          output[:color] = colour unless colour.nil?
+          output[:color] = color unless color.nil?
 
           @children&.each { |type, entry| output[type] = entry.to_h }
         end
