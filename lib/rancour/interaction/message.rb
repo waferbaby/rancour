@@ -3,11 +3,12 @@
 module Rancour
   module Interaction
     class Message
-      attr_accessor :tts, :content, :embeds
+      attr_accessor :tts, :content, :embeds, :flags
 
-      def initialize(tts: false, content: nil)
+      def initialize(tts: false, content: nil, flags: 0)
         self.tts = tts
         self.content = content
+        self.flags = flags
         self.embeds = []
       end
 
@@ -21,6 +22,7 @@ module Rancour
         {}.tap do |output|
           output[:tts] = tts unless tts.nil?
           output[:content] = content unless content.nil?
+          output[:flags] = flags.to_s(2) unless flags.nil?
           output[:embeds] = embeds&.map(&:to_h) unless embeds.nil?
         end
       end
